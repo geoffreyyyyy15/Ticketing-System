@@ -15,7 +15,7 @@ class ImageUpload extends Component
             'image.*' => 'image|max:1024',
         ]);
 
-        foreach ($this->image as $image) 
+        foreach ($this->image as $image)
         {
             $image->store('public');
         }

@@ -9,7 +9,8 @@
     type="{{ $type }}"
     name="{{ $name }}"
     id="floating_email"
-    placeholder=" " required />
+    placeholder=" "  />
     <x-form.label name="{{ $name }}" />
 </div>
+<x-errors.input-error name="{{ $name }}" />
 </x-form.field>
