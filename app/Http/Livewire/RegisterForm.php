@@ -30,16 +30,6 @@ class RegisterForm extends Component
         return view('livewire.register-form');
     }
     public function submit() {
-        $credentials =  $this->validate();
-
-        // Register User
-        foreach ($this->image as $image)
-        {
-            $image->store('public');
-        }
-        $credentials['image'] = request()->file('image')->store('public');
-        $credentials['user_type'] = 1;
-        User::create($credentials);
-        redirect('/register');
+        $this->validate();
     }
 }
