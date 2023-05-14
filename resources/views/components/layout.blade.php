@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
     @vite('resources/css/app.css')
     @include('sweetalert::alert')
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css"  rel="stylesheet" />
     <livewire:styles />
 
 
@@ -23,5 +24,6 @@
     {{ $slot }}
 
     <livewire:scripts />
+    <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
 </body>
 </html>
