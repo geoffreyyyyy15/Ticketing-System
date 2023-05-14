@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use Dotenv\Exception\ValidationException;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -13,7 +14,7 @@ class LoginForm extends Component
     public string $password = '';
 
     protected $rules = [
-        'email' => ['required', 'email', 'exists:users,email'],
+        'email' => ['required', 'email'],
         'password' => ['required']
     ];
 
@@ -31,6 +32,8 @@ class LoginForm extends Component
             session()->regenerate();
             return redirect()->route('home');
         }
-            Alert::error('Failed', 'Your credentials are invalid. Please try again.');
+        session()->flash('message', 'Your credentials were invalid');
+
+        return redirect()->route('login');
     }
 }
