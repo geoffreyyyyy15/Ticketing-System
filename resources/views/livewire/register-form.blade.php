@@ -1,4 +1,4 @@
-<form wire:submit.prevent='submit' method="post" action="{{ route('user.store') }}">
+<form wire:submit.prevent='submit' method="post" action="{{ route('user.store') }}" enctype="multipart/form-data">
     @csrf
     <h2 class="mb-2 text-center">Sign Up</h2>
     <a href="{{ route('login') }}">
