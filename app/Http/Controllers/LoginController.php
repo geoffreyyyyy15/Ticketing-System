@@ -19,7 +19,7 @@ class LoginController extends Controller
         auth()->logout();
 
 
-        alert()->success('Successful', 'Logout Successful!');
-        return redirect('/login');
+        Alert::success('Success', 'You Logout Successfully');
+        return redirect()->route('login');
     }
 }
