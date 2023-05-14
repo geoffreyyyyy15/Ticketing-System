@@ -16,13 +16,12 @@ class RegisterForm extends Component
     public string $password = '';
     public string $name = '';
     public string $password_confirmation = '';
-    public $image = [];
+    public $image;
 
     protected $rules = [
         'email' => ['required', 'email', 'unique:users,email'],
         'username' => ['required', 'min:2', 'unique:users,username'],
         'name' => ['required', 'min:2'],
-        'image.*' => 'image|max:1024',
         'password' => ['required', 'min:8', 'confirmed'],
     ];
     public function render()
@@ -30,6 +29,14 @@ class RegisterForm extends Component
         return view('livewire.register-form');
     }
     public function submit() {
-        $this->validate();
+        $credentials =  $this->validate();
+
+
+      // Register User
+      if ($this->image) {
+        $credentials['image'] = $this->image->store('image');
+    }
+        $credentials['user_type'] = 1;
+        User::create($credentials);
     }
 }
