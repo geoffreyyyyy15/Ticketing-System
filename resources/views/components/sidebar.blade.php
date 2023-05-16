@@ -26,10 +26,10 @@
                   <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown-user">
                     <div class="px-4 py-3" role="none">
                       <p class="text-sm text-gray-900 dark:text-white" role="none">
-                        Neil Sims
+                        {{ auth()->user()->name }}
                       </p>
                       <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
-                        neil.sims@flowbite.com
+                        {{ auth()->user()->email }}
                       </p>
                     </div>
                     <ul class="py-1" role="none">
@@ -52,7 +52,7 @@
           </div>
         </div>
       </nav>
-    
+
       <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">
          <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
             <ul class="space-y-2 font-medium">
@@ -88,60 +88,11 @@
                      <span class="flex-1 ml-3 whitespace-nowrap">Products</span>
                   </a>
                </li>
-    
+
             </ul>
          </div>
       </aside>
-    
-      <div class="p-4 sm:ml-64">
-         <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700 mt-14">
-            <div class="grid grid-cols-3 gap-4 mb-4">
-               <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-                  <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-               </div>
-               <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-                  <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-               </div>
-               <div class="flex items-center justify-center h-24 rounded bg-gray-50 dark:bg-gray-800">
-                  <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-               </div>
-            </div>
-            <div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-               <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-            </div>
-            <div class="grid grid-cols-2 gap-4 mb-4">
-               <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                  <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-               </div>
-               <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                  <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-               </div>
-               <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                  <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-               </div>
-               <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                  <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-               </div>
-            </div>
-            <div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-               <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-            </div>
-            <div class="grid grid-cols-2 gap-4">
-               <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                  <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-               </div>
-               <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                  <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-               </div>
-               <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                  <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-               </div>
-               <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
-                  <p class="text-2xl text-gray-400 dark:text-gray-500">+</p>
-               </div>
-            </div>
-         </div>
-      </div>
-    
 
-    
+
+
+
