@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterContoller;
+use App\Http\Controllers\TicketController;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
 
@@ -36,6 +37,10 @@ Route::prefix('user')->group(function() {
         Route::controller(LoginController::class)->group(function() {
             Route::get('home', 'index')->name('home');
             Route::get('logout', 'destroy')->name('logout');
+        });
+
+        Route::controller(TicketController::class)->group(function() {
+            Route::get('edit', 'create')->name('edit');
         });
 });
 });
