@@ -2,8 +2,10 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Ticket;
 use Dotenv\Exception\ValidationException;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Schema;
 use Livewire\Component;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -30,9 +32,10 @@ class LoginForm extends Component
         // Login User
         if (Auth::attempt($credentials)) {
             session()->regenerate();
-            return redirect()->route('home');
+            alert()->success('Success', 'You are logged in!');
+            return redirect()->route('home')->with('tickets', Ticket::all());
         }
-        session()->flash('message', 'Your credentials were invalid');
+        alert()->error('Failed', 'Invalid Credentials');
 
         return redirect()->route('login');
     }
