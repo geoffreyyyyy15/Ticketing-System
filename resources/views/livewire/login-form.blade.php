@@ -14,7 +14,7 @@
     </div>
     <x-form.input name="email" wire:model.debounce.500ms='email' type="email" />
     <x-form.input name="password" wire:model.debounce.500ms='password' type="password" />
-    <x-form.button >Login</x-form.button>
-  
+    <x-form.button>Login</x-form.button>
+
 
 </form>
