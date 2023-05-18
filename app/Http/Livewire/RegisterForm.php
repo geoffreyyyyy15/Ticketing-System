@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Illuminate\Http\UploadedFile;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RegisterForm extends Component
 {
@@ -16,14 +18,14 @@ class RegisterForm extends Component
     public string $password = '';
     public string $name = '';
     public string $password_confirmation = '';
-    public $image;
+    public $images = [];
 
     protected $rules = [
         'email' => ['required', 'email', 'unique:users,email'],
         'username' => ['required', 'min:2', 'unique:users,username'],
         'name' => ['required', 'min:2'],
         'password' => ['required', 'min:8', 'confirmed'],
-        // 'image' => ['required',  'mimes:jpeg,png,jpg,gif,svg'],
+        'images.*' => ['required', 'max:1024'], // Validate each image separatelys
 
 
     ];
@@ -32,19 +34,23 @@ class RegisterForm extends Component
         return view('livewire.register-form');
     }
     public function submit() {
-        $credentials =  $this->validate();
+        $credentials = $this->validate();
 
+        $imagePaths = [];
+        foreach ($this->images as $image) {
+            $imagePaths[] = $image->store('images');
+        }
 
-        $credentials['user_type'] = 1;
-        $credentials['image'] = request()->file('image')->store('image');
+        $credentials['images'] = $imagePaths;
+
         User::create($credentials);
 
+
+        alert()->success('Success', 'You Registered Successfully');
         return redirect()->route('login');
     }
 
-    public function login() {
-        return redirect()->route('login');
-    }
+
 
     public function updated($property) {
         $this->validateOnly($property);
