@@ -41,6 +41,8 @@ Route::prefix('user')->group(function() {
 
         Route::controller(TicketController::class)->group(function() {
             Route::get('edit', 'create')->name('edit');
+            Route::delete('delete/{ticket}', 'destroy')->name('ticket.delete');
         });
+
 });
 });
