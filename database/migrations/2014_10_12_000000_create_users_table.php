@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('username')->unique();
-            $table->string('image')->nullable();
+            $table->json('images')->nullable();
             $table->string('google_id')->nullable();
             $table->string('email')->unique();
-            $table->integer('user_type');
+            $table->boolean('isAdmin')->default(false);
             $table->string('password');
             $table->timestamps();
         });

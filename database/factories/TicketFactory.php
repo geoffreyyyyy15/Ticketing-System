@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,7 @@ class TicketFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => 1,
+            'user_id' => User::factory(),
             'title' => $this->faker->title(),
             'description' => $this->faker->sentence(),
             'priority' => $this->faker->randomElement([1, 2, 3])

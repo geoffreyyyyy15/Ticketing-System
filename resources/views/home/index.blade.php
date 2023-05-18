@@ -40,8 +40,36 @@
                 <td class="px-6 py-4">
                 {{ $ticket->updated_at }}
             </td>
-                <td class="px-6 py-4">
-                <button class="bg-gray-900 p-2 m-2 text-sm text-white">Edit</button>
+
+            <td class="px-6 py-4">
+
+                    <button data-swal-template="#my-template">
+                        Remove Ticket
+                    </button>
+
+                <template id="my-template">
+                    <swal-title>
+                        Confirm Deletion?
+                    </swal-title>
+                    <swal-icon type="warning" color="red"></swal-icon>
+                    <form action="{{ route('ticket.delete', ['ticket' => $ticket]) }}" method="post">
+                        @method('DELETE')
+                        @csrf
+                            <swal-button type="confirm">
+                                Confirm
+                            </swal-button>
+                        </form>
+                    <swal-button type="cancel">
+                        Cancel
+                    </swal-button>
+                    <swal-param name="allowEscapeKey" value="false" />
+                    <swal-param
+                        name="customClass"
+                        value='{ "popup": "my-popup" }' />
+                        <swal-function-param
+                        name="didOpen"
+                        value="popup => console.log(popup)" />
+                </template>
             </td>
             </tr>
             @endforeach
