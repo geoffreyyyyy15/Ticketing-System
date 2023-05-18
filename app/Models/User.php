@@ -40,7 +40,9 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'images' => 'array', // Cast 'images' attribute as an array
     ];
+
 
     public function ticket() {
         return $this->hasMany(Ticket::class);
