@@ -15,7 +15,7 @@ class TicketsTable extends Component
     {
         return view('livewire.tickets-table', [
             'tickets_columns' => Schema::getColumnListing('tickets'),
-            'tickets' => Ticket::paginate(5),
+            'tickets' => Ticket::all(),
         ]);
     }
 }
