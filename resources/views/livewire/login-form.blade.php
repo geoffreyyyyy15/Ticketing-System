@@ -1,4 +1,4 @@
-<form wire:submit.prevent='login' method="post" action="{{ route('home') }}">
+<form wire:submit.prevent='login' method="post">
     @csrf
     <h2 class="mb-2 text-center">Sign In</h2>
     <div class="flex items-center my-4">
