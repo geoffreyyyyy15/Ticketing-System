@@ -16,7 +16,7 @@ class DeleteTicket extends Component
 
     public function delete()
     {
-        Ticket::destroy($this->ticketId);
+        Ticket::find($this->ticketId)->delete();
 
         $this->dispatchBrowserEvent('refresh-page', ['timeout' => 2000]);
 
