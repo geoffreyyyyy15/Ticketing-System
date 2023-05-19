@@ -30,46 +30,17 @@
             {{ $ticket->priority }}
         </td>
             <td class="px-6 py-4">
-            {{ $ticket->created_at }}
+            {{ $ticket->created_at->diffForHumans() }}
         </td>
             <td class="px-6 py-4">
-            {{ $ticket->updated_at }}
+            {{ $ticket->updated_at->diffForHumans() }}
         </td>
-
         <td class="px-6 py-4">
-
-                <button data-swal-template="#my-template">
-                    Remove Ticket
-                </button>
-
-            <template id="my-template">
-                <swal-title>
-                    Confirm Deletion?
-                </swal-title>
-                <swal-icon type="warning" color="red"></swal-icon>
-                <form action="{{ route('ticket.delete', ['ticket' => $ticket]) }}" method="post">
-                    @method('DELETE')
-                    @csrf
-                        <swal-button type="confirm">
-                            Confirm
-                        </swal-button>
-                    </form>
-                <swal-button type="cancel">
-                    Cancel
-                </swal-button>
-                <swal-param name="allowEscapeKey" value="false" />
-                <swal-param
-                    name="customClass"
-                    value='{ "popup": "my-popup" }' />
-                    <swal-function-param
-                    name="didOpen"
-                    value="popup => console.log(popup)" />
-            </template>
+            <livewire:delete-ticket :ticketId="$ticket->id" :key="$ticket->id" />
         </td>
         </tr>
         @endforeach
     </tbody>
 </table>
-<div class="m-5">
-    {{ $tickets->links() }}
-</div>
+
+{{-- {{ $tickets->links() }} --}}
