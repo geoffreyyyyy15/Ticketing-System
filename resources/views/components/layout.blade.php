@@ -16,22 +16,21 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css"  rel="stylesheet" />
     <script src="//unpkg.com/alpinejs" defer></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css"  rel="stylesheet" />
-    <livewire:styles />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="sweetalert2.min.css">
 
 
-
+<livewire:styles />
 </head>
 <body class="h-screen bg-gradient-to-r from-gray-500 to-white">
     <x-flash />
 
     {{ $slot }}
 
-    <livewire:scripts />
     <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
     <script src="sweetalert2.all.min.js"></script>
     @include('sweetalert::alert')
+    <livewire:scripts />
 </body>
 </html>
