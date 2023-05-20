@@ -12,12 +12,15 @@ class TicketsTable extends Component
 {
     use WithPagination;
 
-    public $ticket;
 
-    public function mount(Ticket $ticket)
-    {
-        $this->ticket = $ticket;
-    }
+
+    public $ticket;
+    public $selectUserID = 0;
+
+    // public function mount(Ticket $ticket)
+    // {
+    //     $this->ticket = $ticket;
+    // }
     public function render()
     {
         return view('livewire.tickets-table', [
@@ -26,11 +29,16 @@ class TicketsTable extends Component
         ]);
     }
 
+    public function changeDelete($ticket){
+        $this->selectUserID = $ticket;
+    }
+
     public function delete()
     {
-        Ticket::find($this->ticket)->delete();
+        $ticket = Ticket::findOrfail($this->selectUserID);
+        $ticket->delete();
 
-        $this->dispatchBrowserEvent('refresh-page', ['timeout' => 2000]);
+        // $this->dispatchBrowserEvent('refresh-page', ['timeout' => 2000]);
 
         // Perform the delete operation using the ticket ID
 
