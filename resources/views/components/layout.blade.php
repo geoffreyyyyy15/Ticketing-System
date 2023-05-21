@@ -81,5 +81,6 @@ themeToggleBtn.addEventListener('click', function() {
 });
 
 </script>
+@include('sweetalert::alert')
 </body>
 </html>
