@@ -11,6 +11,9 @@ class AddTicket extends Component
     public string $description = '';
     public string $priority = '';
 
+
+    
+
     protected $rules = [
         'title' => ['required' , 'min:5'],
         'description' => ['required'],
@@ -18,7 +21,10 @@ class AddTicket extends Component
     ];
 
     public function add() {
+
         $credentials = $this->validate();
+
+        $credentials['user_id'] = auth()->id();
 
         Ticket::create($credentials);
 
@@ -28,6 +34,8 @@ class AddTicket extends Component
         $this->title = '';
         $this->description = '';
         $this->priority = '';
+
+        return;
 
     }
     public function updated($property) {
