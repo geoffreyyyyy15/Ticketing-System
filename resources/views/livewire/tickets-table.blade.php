@@ -1,4 +1,4 @@
-<livewire:add-ticket />
+{{-- <livewire:add-ticket /> --}}
 <table class="w-full text-sm text-left text-gray-500 shadow-lg dark:shadow-white dark:text-gray-400 hover:shadow-lg hover:dark:shadow-neutral-900 transition-all">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
@@ -78,7 +78,6 @@
                             <form wire:prevent.submit='update' class="grid grid-cols-2 gap-4 mb-2" method="post">
                                 @csrf
                                 <div>
-                                    <input type="hidden" wire:model='user_id'  value="{{ $ticket->user_id }}" readonly>
                                     <x-input model="title" name="title" />
                                 </div>
                                 <div class="mt-1">
