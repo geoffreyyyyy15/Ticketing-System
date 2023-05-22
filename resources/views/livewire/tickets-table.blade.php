@@ -1,10 +1,10 @@
-<div>
-    <table class="w-full text-sm text-left text-gray-500 shadow-lg dark:shadow-white dark:text-gray-400 hover:shadow-lg hover:dark:shadow-neutral-900 transition-all">
+<livewire:add-ticket />
+<table class="w-full text-sm text-left text-gray-500 shadow-lg dark:shadow-white dark:text-gray-400 hover:shadow-lg hover:dark:shadow-neutral-900 transition-all">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
             @foreach ($tickets_columns as $columnName)
             <th scope="col" class="px-6 py-3">
-                {{ $columnName }}
+                {{ $columnName == 'user_id' ? 'User' : $columnName }}
             </th>
             @endforeach
             <th scope="col" class="px-6 py-3">
@@ -24,7 +24,7 @@
                 {{ $ticket->id }}
             </th>
             <td class="px-6 py-4">
-            {{ $ticket->user_id }}
+            {{ $ticket->sender->name }}
         </td>
             <td class="px-6 py-4">
             {{ $ticket->title }}
@@ -59,28 +59,51 @@
 
 
             <!-- Modal toggle -->
-        <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+        <button wire:click='changeUpdate({{ $ticket->id }}, {{ $ticket->user_id }})' data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
            Edit
         </button>
 
     <!-- Main modal -->
-    <div id="authentication-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div wire:ignore.self id="authentication-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative w-full max-w-md max-h-full">
             <!-- Modal content -->
-            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <div  class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                 <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modal">
                     <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                     <span class="sr-only">Close modal</span>
                 </button>
                 <div class="px-6 py-6 lg:px-8">
-                    <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Sign in to our platform</h3>
-                    <form class="space-y-6" action="#">
-                        <x-input name="title" />
-                        <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login to your account</button>
-                        <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
-                            Not registered? <a href="#" class="text-blue-700 hover:underline dark:text-blue-500">Create account</a>
+                    <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Edit Ticket</h3>
+                        <div class="">
+                            <form wire:prevent.submit='update' class="grid grid-cols-2 gap-4 mb-2" method="post">
+                                @csrf
+                                <div>
+                                    <input type="hidden" wire:model='user_id'  value="{{ $ticket->user_id }}" readonly>
+                                    <x-input model="title" name="title" />
+                                </div>
+                                <div class="mt-1">
+                                    <label for="priority" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Priority</label>
+                                    <select wire:model="priority" class="dark:bg-gray-700 p-2 text-gray-300 text-sm  rounded-lg" name="" id="">
+                                        <option disabled selected>Priority</option>
+                                        <option value="1">Low</option>
+                                        <option value="2">Immediate</option>
+                                        <option value="3">Urgent</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <x-textarea model="description" label="description" />
+                        </form>
+                        <div class="flex justify-center items-center m-2">
+                            <button wire:click='update()' type="button" class="text-white bg-[#24292F] hover:translate-x-0 hover:scale-110 transition-all hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 mr-2 mb-2">
+                                Update
+                            </button>
                         </div>
-                    </form>
+                        <div class="flex justify-center items-center">
+                            <div wire:loading wire:target='update'>
+                                <div class="px-3 py-1 text-xs font-medium leading-none text-center text-blue-800 bg-blue-200 rounded-full animate-pulse dark:bg-blue-900 dark:text-blue-200">loading...</div>
+                            </div>
+                            <x-flash />
+                        </div>
                 </div>
             </div>
         </div>
@@ -112,9 +135,11 @@
         </td>
         </tr>
         @endforeach
-
     </tbody>
 </table>
+<div wire:loading wire:target='delete'>
+    <div class="px-3 py-1 text-xs font-medium leading-none text-center text-blue-800 bg-blue-200 rounded-full animate-pulse dark:bg-blue-900 dark:text-blue-200">loading...</div>
+</div>
 @else
 <h1 class="text-black text-lg text-center">No Tickets Found</h1>
 @endif

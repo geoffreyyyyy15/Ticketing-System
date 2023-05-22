@@ -26,8 +26,6 @@ class RegisterForm extends Component
         'name' => ['required', 'min:2'],
         'password' => ['required', 'min:8', 'confirmed'],
         'images.*' => ['required', 'max:1024'], // Validate each image separatelys
-
-
     ];
     public function render()
     {
