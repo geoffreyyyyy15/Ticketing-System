@@ -1,5 +1,5 @@
 <div>
-    <div wire:ignore.self class="flex justify-center text-center items-center m-2">
+    <div  class="flex justify-center text-center items-center m-2">
         <button data-modal-target="add-new-ticket-modal" data-modal-toggle="add-new-ticket-modal" type="submit" class="text-white w-full bg-[#24292F] sticky bottom-0 left-0 hover:translate-x-0 hover:scale-90 transition-all hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center justify-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 mr-2 mb-2">
             <svg aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 mr-2">
                 <path d="M10.75 6.75a.75.75 0 00-1.5 0v2.5h-2.5a.75.75 0 000 1.5h2.5v2.5a.75.75 0 001.5 0v-2.5h2.5a.75.75 0 000-1.5h-2.5v-2.5z"></path>
@@ -10,7 +10,7 @@
 
 
     <!-- Main modal -->
-    <div id="add-new-ticket-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div wire:ignore.self id="add-new-ticket-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative w-full max-w-md max-h-full">
             <!-- Modal content -->
             <div  class="relative bg-white rounded-lg shadow dark:bg-gray-700">
