@@ -36,7 +36,7 @@ class TicketsTable extends Component
     {
         return view('livewire.tickets-table', [
             'tickets_columns' => Schema::getColumnListing('tickets'),
-            'tickets' => Ticket::latest('created_at')->get(),
+            'tickets' => Ticket::latest('created_at')->paginate(5),
         ]);
     }
 

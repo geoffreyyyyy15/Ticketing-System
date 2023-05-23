@@ -144,4 +144,4 @@
 @endif
 </div>
 
-{{-- {{ $tickets->links() }} --}}
+{{ $tickets->links() }}
