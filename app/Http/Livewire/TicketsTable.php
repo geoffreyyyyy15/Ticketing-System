@@ -18,6 +18,7 @@ class TicketsTable extends Component
     public string $description = '';
     public string $title = '';
     public string $priority = '';
+    public string $title1;
     public $user_id;
     public $selectTicketID = 0;
     public $selectUserID = 0;
@@ -46,6 +47,14 @@ class TicketsTable extends Component
     public function changeUpdate($ticket, $user_id) {
         $this->selectTicketID = $ticket;
         $this->selectUserID = $user_id;
+
+        function ticketValue($id, $ticketColumn) {
+            return Ticket::all()->where('id', $id)->pluck($ticketColumn)->first();
+        }
+
+        $this->title = ticketValue($ticket, 'title');    
+        $this->priority = ticketValue($ticket, 'priority');    
+        $this->description = ticketValue($ticket, 'description');    
     }
 
     public function delete()
@@ -66,6 +75,8 @@ class TicketsTable extends Component
             'description' => $this->description,
             'priority' => $this->priority,
         ]);
+
+        
 
         session()->flash('message', 'Ticket Successfully updated.');
 
