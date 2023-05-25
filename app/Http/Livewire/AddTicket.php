@@ -13,7 +13,6 @@ class AddTicket extends Component
 
 
 
-
     protected $rules = [
         'title' => ['required' , 'min:5'],
         'description' => ['required'],
@@ -30,12 +29,13 @@ class AddTicket extends Component
 
         session()->flash('message', 'Ticket Posted Successfully');
 
-        // // Reset the form fields
-        // $this->title = '';
-        // $this->description = '';
-        // $this->priority = '';
 
-        // return;
+        // Reset the form fields
+        $this->title = '';
+        $this->description = '';
+        $this->priority = '';
+
+        return;
 
     }
     public function updated($property) {
