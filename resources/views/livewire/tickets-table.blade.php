@@ -1,6 +1,6 @@
 {{-- <livewire:add-ticket /> --}}
-<table class="w-full text-sm text-left text-gray-500 shadow-lg dark:shadow-white dark:text-gray-400 hover:shadow-lg hover:dark:shadow-neutral-900 transition-all">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+<table class="w-full text-sm text-left text-gray-500 shadow-lg dark:shadow-white dark:text-gray-400 hover:shadow-lg hover:dark:shadow-blue-500 transition-all">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-100 dark:text-gray-800">
         <tr>
             @foreach ($tickets_columns as $columnName)
             <th scope="col" class="px-6 py-3">
@@ -19,8 +19,8 @@
         @if ($tickets->count() > 0)
 
         @foreach ($tickets as $ticket)
-        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+        <tr class="bg-white border-b dark:bg-white dark:border-gray-700 dark:text-gray-900">
+            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-gray-900">
                 {{ $ticket->id }}
             </th>
             <td class="px-6 py-4">
@@ -143,5 +143,6 @@
 <h1 class="text-black text-lg text-center">No Tickets Found</h1>
 @endif
 </div>
-
-{{ $tickets->links() }}
+<div class="mt-5">
+    {{ $tickets->links() }}
+</div>
