@@ -20,4 +20,7 @@ class TicketController extends Controller
 
         return back();
     }
+    public function index() {
+        return view('home.tickets');
+    }
 }
