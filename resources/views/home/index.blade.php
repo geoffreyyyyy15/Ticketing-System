@@ -5,6 +5,7 @@
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
     <livewire:add-ticket />
   <livewire:tickets-table />
+  
 </div>
 
     </div>
