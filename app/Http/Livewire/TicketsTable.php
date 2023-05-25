@@ -27,12 +27,7 @@ class TicketsTable extends Component
     // {
     //     $this->ticket = $ticket;
     // }
-
-    protected $rules = [
-        'title' => ['required' , 'min:5'],
-        'description' => ['required'],
-        'priority' => ['required'],
-    ];
+    
     public function render()
     {
         return view('livewire.tickets-table', [
@@ -40,6 +35,11 @@ class TicketsTable extends Component
             'tickets' => Ticket::latest('created_at')->paginate(5),
         ]);
     }
+    protected $rules = [
+        'title' => ['required' , 'min:5'],
+        'description' => ['required'],
+        'priority' => ['required'],
+    ];
 
     public function changeDelete($ticket){
         $this->selectTicketID = $ticket;
@@ -61,7 +61,6 @@ class TicketsTable extends Component
     {
         $ticket = Ticket::findOrfail($this->selectTicketID);
         $ticket->delete();
-
 
     }
     public function update()
