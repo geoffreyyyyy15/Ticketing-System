@@ -29,7 +29,7 @@
     </script>
 
 </head>
-<body class="h-screen bg-gradient-to-r from-gray-500 to-white">
+<body class="h-screen bg-gradient-to-r dark:bg-black from-gray-500 to-white">
     <x-flash />
 
     {{ $slot }}
