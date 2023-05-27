@@ -25,7 +25,7 @@ class AddTicket extends Component
 
         $credentials['user_id'] = auth()->id();
 
-        Ticket::create($credentials);
+        Ticket::updateOrCreate($credentials);
 
         session()->flash('message', 'Ticket Posted Successfully');
 
@@ -34,6 +34,8 @@ class AddTicket extends Component
         $this->title = '';
         $this->description = '';
         $this->priority = '';
+        
+
 
         return;
 
