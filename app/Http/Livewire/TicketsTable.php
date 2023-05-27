@@ -36,7 +36,7 @@ class TicketsTable extends Component
         ]);
     }
     protected $rules = [
-        'title' => ['required' , 'min:5'],
+        'title' => ['required'],
         'description' => ['required'],
         'priority' => ['required'],
     ];
