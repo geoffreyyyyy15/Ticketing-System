@@ -1,4 +1,4 @@
-    <div wire:poll.1s>
+    <div wire:poll.keep-alive.5s>
         <table class="w-full text-sm text-left text-gray-500 shadow-lg dark:shadow-white dark:text-gray-400 hover:shadow-lg hover:dark:shadow-black transition-all rounded-lg">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-100 dark:text-gray-800">
                 <tr>
@@ -142,10 +142,11 @@
 @else
 <h1 class="text-black text-lg text-center">No Tickets Found</h1>
 @endif
-</div>
-
-
 <div class="mt-5 mb-5 p-2">
     {{ $tickets->links() }}
 </div>
 </div>
+
+
+
+
