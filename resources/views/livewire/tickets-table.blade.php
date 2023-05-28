@@ -83,8 +83,8 @@
                             <div class="mt-1">
                                 <label for="priority" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> Priority</label>
                                 <select wire:model="priority" class="dark:bg-gray-700 p-2 text-gray-300 text-sm  rounded-lg" name="" id="">
-                                    <option disabled selected>Priority</option>
-                                    <option value="1">Low</option>
+                                    <option disabled>Priority</option>
+                                    <option value="1" selected>Low</option>
                                     <option value="2">Immediate</option>
                                     <option value="3">Urgent</option>
                                 </select>
@@ -145,7 +145,7 @@
 </div>
 
 
-<div class="mt-5 mb-5">
+<div class="mt-5 mb-5 p-2">
     {{ $tickets->links() }}
 </div>
 </div>
