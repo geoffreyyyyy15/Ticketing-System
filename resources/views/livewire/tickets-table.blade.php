@@ -1,4 +1,4 @@
-    <div wire:poll.keep-alive.5s>
+    <div wire:poll.keep-alive.1s>
         <table class="w-full text-sm text-left text-gray-500 shadow-lg dark:shadow-white dark:text-gray-400 hover:shadow-lg hover:dark:shadow-black transition-all rounded-lg">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-100 dark:text-gray-800">
                 <tr>
