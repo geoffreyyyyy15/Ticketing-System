@@ -12,7 +12,6 @@ class AddTicket extends Component
     public string $priority = '';
 
 
-
     protected $rules = [
         'title' => ['required' , 'min:5'],
         'description' => ['required'],
