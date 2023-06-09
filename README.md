@@ -1,3 +1,7 @@
+![image](https://github.com/geoffreyyyyy15/Ticketing-System/assets/48009181/ccaf845c-a020-434f-b3f1-dbe43c8b7cb6)
+![image](https://github.com/geoffreyyyyy15/Ticketing-System/assets/48009181/ccac9c9d-3010-4a00-832d-299ca3aa1ad4)
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
