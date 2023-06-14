@@ -5,9 +5,12 @@ namespace App\Providers;
 // use Illuminate\Support\Facades\Gate;
 
 use App\Models\User;
-use Illuminate\Auth\Access\Gate;
+// use Illuminate\Auth\Access\Gate;
+use Illuminate\Auth\Access\Response;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate as FacadesGate;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -25,7 +28,13 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->registerPolicies();
+        // $this->registerPolicies();
         // Gate::define('ticket_delete', fn(User $user) => $user->isAdmin);
+
+        Gate::define('users/tickets', function (User $user) {
+            return $user->isAdmin
+                        ? Response::allow()
+                        : Response::deny('You must be an administrator.');
+        });
     }
 }
